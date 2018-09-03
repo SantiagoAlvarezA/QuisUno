@@ -32,19 +32,69 @@ class Cancion:
     idCancion = 0
 
     def crear_cancion(self):
-        self.titulo = input('Digite el titilo de la cancion: ')
-        self.genero = input('Digite el genero de la cancion: ')
-        self.agnoCreacion = es_numero('Digite el el año de creacion de la canion: ')
-        self.idArtista = es_numero('Digite de el numero de documento del autor de la cancion: ')
-        self.idCancion = es_numero('Digite un id para esta cancion')
+        existeArtista = False
 
-        dicCancion [self.idCancion] = {
-            'titulo': self.titulo,
-            'genero': self.genero,
-            'agnoCreacion': self.agnoCreacion,
-            'idArtista': self.idArtista
-        }
+
+        while not existeArtista:
+            try:
+                self.idArtista = es_numero('Digite de el numero de documento del autor de la cancion: ')
+                artista = dicartista[self.idArtista]
+                existeArtista = True
+            except:
+                print('El artista no existe')
+                existeArtista = False
+
+        if existeArtista:
+            self.idCancion = es_numero('Digite un id para esta cancion')
+            self.titulo = input('Digite el titilo de la cancion: ')
+            self.genero = input('Digite el genero de la cancion: ')
+            self.agnoCreacion = es_numero('Digite el el año de creacion de la canion: ')
+
+            dicCancion [self.idCancion] = {
+                'titulo': self.titulo,
+                'genero': self.genero,
+                'agnoCreacion': self.agnoCreacion,
+                'idArtista': self.idArtista
+            }
+        existeArtista = False
+
     def listar_canciones(self):
+
+        existeArtista = False
+        existeCancionesArtista = False
+
+        while not existeArtista:
+            try:
+                self.idArtista = es_numero('Digite de el numero de documento del autor de la cancion: ')
+                artista = dicartista[self.idArtista]
+                existeArtista = True
+            except:
+                print('El artista no existe')
+                existeArtista = False
+
+
+        if existeArtista:
+            for artCan in dicCancion:
+                if dicCancion[artCan]['idArtista']==self.idArtista:
+                    print("""
+                    Titulo de la cancion: {}
+                    Nombre artistico del autor: {}
+                    Año que se creo esta cancion: {}
+                    Genero de la cancion: {}
+                    Nombre real del artista: {}                    
+                    """.format(dicCancion[artCan]['titulo'],
+                               dicartista[self.id]['nomArtistico'],
+                               dicCancion[artCan]['agnoCreacion'],
+                               dicCancion[artCan]['genero'],
+                               dicartista[self.id]['nomReal']
+
+                               ))
+                    #print(art)
+
+
+
+
+
         print('en construccion')
 
 
