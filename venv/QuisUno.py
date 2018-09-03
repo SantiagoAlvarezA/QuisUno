@@ -89,13 +89,8 @@ class Cancion:
                                dicartista[self.id]['nomReal']
 
                                ))
-                    #print(art)
+        existeArtista = False
 
-
-
-
-
-        print('en construccion')
 
 
 
